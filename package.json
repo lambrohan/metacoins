@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "dev": "nx run-many --parallel --target=serve --projects=auth,gateway",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
@@ -12,7 +13,9 @@
   "dependencies": {
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
+    "@nestjs/microservices": "^9.0.3",
     "@nestjs/platform-express": "^8.0.0",
+    "ioredis": "^5.2.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
     "tslib": "^2.3.0"
@@ -23,6 +26,7 @@
     "@nrwl/cli": "14.4.3",
     "@nrwl/eslint-plugin-nx": "14.4.3",
     "@nrwl/jest": "14.4.3",
+    "@nrwl/js": "14.4.3",
     "@nrwl/linter": "14.4.3",
     "@nrwl/nest": "14.4.3",
     "@nrwl/node": "14.4.3",

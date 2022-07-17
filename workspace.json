@@ -2,6 +2,8 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "gateway": "apps/gateway"
+    "auth": "apps/auth",
+    "gateway": "apps/gateway",
+    "shared": "libs/shared"
   }
 }
