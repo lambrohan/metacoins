@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nx run-many --parallel --target=serve --projects=auth,gateway",
+    "dev": "nx run-many --parallel --target=serve --projects=auth,gateway,web3",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",

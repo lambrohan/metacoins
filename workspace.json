@@ -4,6 +4,7 @@
   "projects": {
     "auth": "apps/auth",
     "gateway": "apps/gateway",
-    "shared": "libs/shared"
+    "shared": "libs/shared",
+    "web3": "apps/web3"
   }
 }
