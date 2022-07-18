@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "auth": "apps/auth",
+    "frontend": "apps/frontend",
+    "frontend-e2e": "apps/frontend-e2e",
     "gateway": "apps/gateway",
     "payment": "apps/payment",
     "shared": "libs/shared",

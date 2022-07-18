@@ -24,5 +24,18 @@
       "dependsOn": ["^build"]
     }
   },
-  "defaultProject": "gateway"
+  "defaultProject": "gateway",
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "scss",
+        "linter": "eslint"
+      }
+    }
+  }
 }
