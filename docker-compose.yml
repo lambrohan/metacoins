@@ -21,4 +21,4 @@ services:
       MONGODB_REPLICA_SET_KEY: replicasetkey123
       MONGODB_ADVERTISED_HOSTNAME: localhost
     volumes:
-      - ./mongo-data:/data/db
+      - ./mongo-data:/bitnami/mongodb
