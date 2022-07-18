@@ -51,6 +51,20 @@
         "jestConfig": "apps/auth/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "generate": {
+      "builder": "@nx-tools/nx-prisma:generate",
+      "options": {
+        "schema": "apps/auth/prisma/schema.prisma"
+      }
+    },
+
+    "seed": {
+      "builder": "@nx-tools/nx-prisma:seed",
+      "options": {
+        "script": "apps/auth/prisma/seed.ts",
+        "tsConfig": "apps/auth/tsconfig.app.json"
+      }
     }
   },
   "tags": []

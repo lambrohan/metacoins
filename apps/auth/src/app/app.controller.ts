@@ -11,4 +11,9 @@ export class AppController {
   handleStatus() {
     return 'auth ok';
   }
+
+  @MessagePattern('get_users')
+  async handleGetUsers() {
+    return await this.appService.getUsers();
+  }
 }

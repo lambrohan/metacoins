@@ -11,12 +11,15 @@ services:
       - ./redis-data:/data
 
   mongodb:
-    image: mongo:5.0
+    image: bitnami/mongodb:latest
     ports:
       - 27017:27017
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGODB_REPLICA_SET_KEY: replicasetkey123
+      MONGODB_ADVERTISED_HOSTNAME: localhost
+
     volumes:
       - ./mongo-data:/data/db

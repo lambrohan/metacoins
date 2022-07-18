@@ -40,3 +40,7 @@ Thumbs.db
 
 # environment vars
 .env
+
+# docker volumes
+mongo-data
+redis-data
