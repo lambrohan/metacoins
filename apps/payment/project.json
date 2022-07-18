@@ -51,6 +51,12 @@
         "jestConfig": "apps/payment/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "generate": {
+      "builder": "@nx-tools/nx-prisma:generate",
+      "options": {
+        "schema": "apps/payment/prisma/schema.prisma"
+      }
     }
   },
   "tags": []
