@@ -1,0 +1,5 @@
+export const MICROSERVICE_INJ_TOKENS = {
+  AUTH: 'AUTH',
+  WEB3: 'WEB3',
+  PAYMENT: 'PAYMENT',
+};

@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis-data:/data
+
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - ./mongo-data:/data/db
