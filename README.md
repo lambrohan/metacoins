@@ -2,64 +2,42 @@
 
 This project was generated using [Nx](https://nx.dev).
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
-
 🔎 **Smart, Fast and Extensible Build System**
 
-## Adding capabilities to your workspace
+Below are our core services:
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+- Gateway
+- Auth
+- Payment
+- Web3
+- Frontend(nextjs)
+- Frontend-e2e(cypress)
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+## Run it locally
 
-Below are our core plugins:
+### 1. Local `.env` vars setup
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+Look for `.env.example` files and make `.env` besides each example file. There must be a env file in each of the following directories -> `root, apps/auth, apps/payment, apps/web3`
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+### 2. Get `Redis` and `mongodb` up using `docker-compose up -d` from root.
 
-## Generate an application
+These containers stores the data in `./redis-data` & `./mongo-data` folders and hence may fail to start due to folder permissions. In that case run `sudo chown -R 1001 ./mongo-data` & restart the containers.
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+### 3. Install npm packages by running `yarn` in root directory.
 
-> You can use any of the plugins above to generate applications as well.
+Prisma types are generated automatically using postinstall but make sure the types are generated after yarn install. If not generate the types.
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+### 4. Generate Prisma Types (optional)
 
-## Generate a library
+`yarn generate:all`
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+### 5. Run Apps
 
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@metacoins/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+- Backend Services - `yarn dev`
+- Backend + Next Frontend - `yarn dev:all`
+- Backend gateway is served on port 4000
+- Next frontend is served on port 3000
+- Swagger url `https://localhost:4000/api`
 
 Run `nx affected:test` to execute the unit tests affected by a change.
 
@@ -72,19 +50,3 @@ Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
 ## Understand your workspace
 
 Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
