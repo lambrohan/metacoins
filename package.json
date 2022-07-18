@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nx run-many --parallel --target=serve --projects=gateway,auth,web3,payment",
+    "generate:all": "nx run-many --target=generate --projects=auth,web3,payment",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",

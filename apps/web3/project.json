@@ -51,6 +51,12 @@
         "jestConfig": "apps/web3/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "generate": {
+      "builder": "@nx-tools/nx-prisma:generate",
+      "options": {
+        "schema": "apps/web3/prisma/schema.prisma"
+      }
     }
   },
   "tags": ["web3-service"]
