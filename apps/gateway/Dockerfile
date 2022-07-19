@@ -5,7 +5,6 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /usr/src/app
 COPY dist/apps/gateway/package*.json ./
 RUN yarn
-
 FROM node:16.14.2-alpine as runner
 RUN apk add --no-cache dumb-init
 ENV NODE_ENV production
