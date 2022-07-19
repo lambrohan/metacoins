@@ -19,6 +19,20 @@
       }
     }
   },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "docker": [
+      {
+        "target": "build",
+        "projects": "self"
+      }
+    ]
+  },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"]

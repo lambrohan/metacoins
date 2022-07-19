@@ -10,13 +10,15 @@
         "outputPath": "dist/apps/gateway",
         "main": "apps/gateway/src/main.ts",
         "tsConfig": "apps/gateway/tsconfig.app.json",
-        "assets": ["apps/gateway/src/assets"]
+        "assets": ["apps/gateway/src/assets"],
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {
           "optimization": true,
           "extractLicenses": true,
           "inspect": false,
+
           "fileReplacements": [
             {
               "replace": "apps/gateway/src/environments/environment.ts",
@@ -51,7 +53,27 @@
         "jestConfig": "apps/gateway/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "docker": {
+      "executor": "@nx-tools/nx-docker:build",
+      "options": {
+        "push": true,
+        "metadata": {
+          "images": ["lambrohan/metacoins-gateway"],
+          "tags": [
+            "type=schedule",
+            "type=ref,event=branch",
+            "type=ref,event=tag",
+            "type=ref,event=pr",
+            "type=semver,pattern={{version}}",
+            "type=semver,pattern={{major}}.{{minor}}",
+            "type=semver,pattern={{major}}",
+            "type=sha"
+          ]
+        }
+      }
     }
   },
+
   "tags": []
 }
