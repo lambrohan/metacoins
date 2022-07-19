@@ -15,14 +15,16 @@ async function bootstrap() {
   app.use(morgan('tiny'));
   const port = process.env.GATEWAY_PORT || 4000;
 
-  // init swagger
-  const config = new DocumentBuilder()
-    .setTitle('Metacoins')
-    .setDescription('Metacoins api docs')
-    .build();
-  const doc = SwaggerModule.createDocument(app, config);
+  if (process.env.NODE_ENV !== 'production') {
+    // init swagger
+    const config = new DocumentBuilder()
+      .setTitle('Metacoins')
+      .setDescription('Metacoins api docs')
+      .build();
+    const doc = SwaggerModule.createDocument(app, config);
 
-  SwaggerModule.setup('api', app, doc);
+    SwaggerModule.setup('api', app, doc);
+  }
 
   // listen
   await app.listen(port);
