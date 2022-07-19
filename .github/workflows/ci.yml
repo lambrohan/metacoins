@@ -1,0 +1,50 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - 'main'
+    tags:
+      - '*.*.*'
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.26.0
+        env:
+          WITH_V: false
+          DEFAULT_BUMP: patch
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with: # I get a lint error tell me Missing required key 'github-token'
+          images: ${{ secrets.DOCKERHUB_REPOSITORY }}
+          tags: type=semver,pattern={{version}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Log into registry
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DH_USERNAME }}
+          password: ${{ secrets.DH_PASSWORD }}
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
