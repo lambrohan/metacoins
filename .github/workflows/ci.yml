@@ -1,12 +1,24 @@
-name: Build
-# This workflow is triggered on pushes to the repository.
+name: CI
+
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
 
 jobs:
+  main:
+    name: Nx Cloud - Main Job
+    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.5
+    with:
+      number-of-agents: 3
+      parallel-commands: |
+        yarn nx-cloud record -- yarn nx workspace-lint
+        yarn nx-cloud record -- yarn nx format:check
+      parallel-commands-on-agents: |
+        yarn nx affected --target=lint --parallel=3
+        yarn nx affected --target=test --parallel=3 --ci --code-coverage
+
   docker-build:
     name: Docker build
     runs-on: ubuntu-latest
@@ -34,3 +46,9 @@ jobs:
 
       - name: 'nx build'
         run: npx nx affected --target=docker
+
+  agents:
+    name: Nx Cloud - Agents
+    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.5
+    with:
+      number-of-agents: 3
