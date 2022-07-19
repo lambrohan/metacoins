@@ -55,14 +55,7 @@
       }
     },
     "docker": {
-      "executor": "@nx-tools/nx-docker:build",
-      "options": {
-        "push": true,
-        "metadata": {
-          "images": ["lambrohan/metacoins-gateway"],
-          "tags": ["latest"]
-        }
-      }
+      "executor": "@nx-tools/nx-docker:build"
     }
   },
 
