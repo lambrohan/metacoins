@@ -20,6 +20,7 @@ jobs:
         yarn nx affected --target=test --parallel=3 --ci --code-coverage
 
   docker-build:
+    needs: main
     name: Docker build
     runs-on: ubuntu-latest
     steps:
