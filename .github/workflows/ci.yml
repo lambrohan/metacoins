@@ -28,12 +28,6 @@ jobs:
         with:
           ref: ${{github.event.pull_request.head.ref}}
           fetch-depth: 0
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          tags: type=semver,pattern={{version}}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
